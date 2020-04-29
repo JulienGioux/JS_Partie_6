@@ -51,14 +51,12 @@
               }
     };
     for (currentYear = startYear; currentYear <= 2030; currentYear++) {
-       console.log(currentYear);
        cln = tBody.firstElementChild.cloneNode(true);
        cln.firstElementChild.innerText = currentYear;
        tBody.appendChild(cln);
        if (leapYear(currentYear)){
         cln.firstElementChild.className = `text-danger bg-warning`;
        }
-       console.log(cln);
     }
     
 </script>
