@@ -11,6 +11,57 @@
 </head>
 
 <body>
+    <div>
+        <table class="border border-info m-5">
+            <thead class="border border-info">
+                <th>Années</th>
+            </thead>
+            <tbody id="tBody" class="border border-info">
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tfoot class="border border-info">
+                <tr>
+                    <td>
+                        from 2020 to 2030
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+<script>
+    let tBody = document.getElementById(`tBody`);
+    const startYear = 2020;
+    let  currentYear;
+    function leapYear (yearTest) {
+              if (Number.isInteger(yearTest / 4)) {
+                  if (Number.isInteger(yearTest/100)){
+                      if (Number.isInteger(yearTest/400)){
+                          return true;
+                      } else {
+                          return false;
+                      }
+                  } else {
+                      return true;
+                  }
+              } else {
+                  return false;
+              }
+    };
+    for (currentYear = startYear; currentYear <= 2030; currentYear++) {
+       console.log(currentYear);
+       cln = tBody.firstElementChild.cloneNode(true);
+       cln.firstElementChild.innerText = currentYear;
+       tBody.appendChild(cln);
+       if (leapYear(currentYear)){
+        cln.firstElementChild.className = `text-danger`;
+       }
+       console.log(cln);
+    }
+    
+</script>
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
