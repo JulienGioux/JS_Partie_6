@@ -32,10 +32,11 @@
         </table>
     </div>
     <script>
+        const startYear = 2020;
+
         addYearRowColoreLeap: {
-            const startYear = 2020;
-            let tBody = document.getElementById(`tBody`);
-            let myHtmlNode = `<tr><td></td></tr>`;
+            
+            let tabBody = document.getElementById(`tBody`);
             let currentYear;
 
             function leapYear(yearTest) {
@@ -58,7 +59,7 @@
                 let nodeTd = document.createElement(`td`);
                 nodeTd.innerText = currentYear;
                 nodeTr.appendChild(nodeTd);                
-                tBody.appendChild(nodeTr);
+                tabBody.appendChild(nodeTr);
                 if (leapYear(currentYear)) {
                     nodeTd.className = `text-danger bg-warning`;
                 }
