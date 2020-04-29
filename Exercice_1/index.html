@@ -9,8 +9,10 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Exercice 1</title>
 </head>
-    <h1>Exercice 1</h1>
-    <p>A l'aide d'une boucle, afficher toutes les années entre 2020 et 2030. Colorer en rouge toutes les années bissextiles.</p>
+<h1>Exercice 1</h1>
+<p>A l'aide d'une boucle, afficher toutes les années entre 2020 et 2030. Colorer en rouge toutes les années bissextiles.
+</p>
+
 <body>
     <div>
         <table class="border border-info m-5">
@@ -18,9 +20,7 @@
                 <th>Années</th>
             </thead>
             <tbody id="tBody" class="border border-info">
-                <tr>
-                    <td></td>
-                </tr>
+
             </tbody>
             <tfoot class="border border-info">
                 <tr>
@@ -31,35 +31,53 @@
             </tfoot>
         </table>
     </div>
-<script>
-    let tBody = document.getElementById(`tBody`);
-    const startYear = 2020;
-    let  currentYear;
-    function leapYear (yearTest) {
-              if (Number.isInteger(yearTest / 4)) {
-                  if (Number.isInteger(yearTest / 100)){
-                      if (Number.isInteger(yearTest / 400)){
-                          return true;
-                      } else {
-                          return false;
-                      }
-                  } else {
-                      return true;
-                  }
-              } else {
-                  return false;
-              }
-    };
-    for (currentYear = startYear; currentYear <= 2030; currentYear++) {
-       cln = tBody.firstElementChild.cloneNode(true);
-       cln.firstElementChild.innerText = currentYear;
-       tBody.appendChild(cln);
-       if (leapYear(currentYear)){
-        cln.firstElementChild.className = `text-danger bg-warning`;
-       }
-    }
-    
-</script>
+    <script>
+        addYearRowColoreLeap: {
+            const startYear = 2020;
+            let tBody = document.getElementById(`tBody`);
+            let myHtmlNode = `<tr><td></td></tr>`;
+            let currentYear;
+
+            function leapYear(yearTest) {
+                if (Number.isInteger(yearTest / 4)) {
+                    if (Number.isInteger(yearTest / 100)) {
+                        if (Number.isInteger(yearTest / 400)) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return true;
+                    }
+                } else {
+                    return false;
+                }
+            };
+            for (currentYear = startYear; currentYear <= 2030; currentYear++) {
+                let nodeTr = document.createElement(`tr`);
+                let nodeTd = document.createElement(`td`);
+                nodeTd.innerText = currentYear;
+                nodeTr.appendChild(nodeTd);                
+                tBody.appendChild(nodeTr);
+                if (leapYear(currentYear)) {
+                    nodeTd.className = `text-danger bg-warning`;
+                }
+            }
+
+            // 1 ère solution avec cloneNode, implique l'existance
+            // du tr et td dans le fichier html et laisse une ligne vide en clonant.
+            // //////////////////////////
+            // 
+            // for (currentYear = startYear; currentYear <= 2030; currentYear++) {
+            //     cln = tBody.firstElementChild.cloneNode(true);
+            //     cln.firstElementChild.innerText = currentYear;
+            //     tBody.appendChild(cln);
+            //     if (leapYear(currentYear)) {
+            //         cln.firstElementChild.className = `text-danger bg-warning`;
+            //     }
+            // }
+        }
+    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
