@@ -14,7 +14,7 @@
 </p>
 
 <body>
-    <div>
+    <div id="testFunction">
         <table class="border border-info m-5">
             <thead class="border border-info">
                 <th>Années</th>
@@ -33,55 +33,29 @@
     </div>
     <script>
         const startYear = 2020;
+        const lastYear = 2030;
 
         addYearRowColoreLeap: {
-            
-            let tabBody = document.getElementById(`tBody`);
-            let currentYear;
 
-            function leapYear(yearTest) {
-                if (Number.isInteger(yearTest / 4)) {
-                    if (Number.isInteger(yearTest / 100)) {
-                        if (Number.isInteger(yearTest / 400)) {
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    } else {
-                        return true;
-                    }
-                } else {
-                    return false;
-                }
-            };
-            for (currentYear = startYear; currentYear <= 2030; currentYear++) {
+            let tabBody = document.getElementById(`tBody`);
+            
+            for (currentYear = startYear; currentYear <= lastYear; currentYear++) {
                 let nodeTr = document.createElement(`tr`);
                 let nodeTd = document.createElement(`td`);
                 nodeTd.innerText = currentYear;
-                nodeTr.appendChild(nodeTd);                
+                nodeTr.appendChild(nodeTd);
                 tabBody.appendChild(nodeTr);
-                if (leapYear(currentYear)) {
-                    nodeTd.className = `text-danger bg-warning`;
+                if (((currentYear % 4 == 0) && (currentYear % 100 != 0)) || (currentYear % 400 == 0)) {
+                    let txtAsterix = document.createTextNode(`*`);
+                    nodeTd.appendChild(txtAsterix);
+                    nodeTd.className = `text-white bg-danger`;
                 }
             }
-
-            // 1 ère solution avec cloneNode, implique l'existance
-            // du tr et td dans le fichier html et laisse une ligne vide en clonant.
-            // //////////////////////////
-            // 
-            // for (currentYear = startYear; currentYear <= 2030; currentYear++) {
-            //     cln = tBody.firstElementChild.cloneNode(true);
-            //     cln.firstElementChild.innerText = currentYear;
-            //     tBody.appendChild(cln);
-            //     if (leapYear(currentYear)) {
-            //         cln.firstElementChild.className = `text-danger bg-warning`;
-            //     }
-            // }
         }
     </script>
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -89,7 +63,7 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
+    </script> -->
 </body>
 
 </html>
