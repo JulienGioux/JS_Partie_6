@@ -7,9 +7,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Exercice 1</title>
 </head>
-
+    <h1>Exercice 1</h1>
+    <p>A l'aide d'une boucle, afficher toutes les années entre 2020 et 2030. Colorer en rouge toutes les années bissextiles.</p>
 <body>
     <div>
         <table class="border border-info m-5">
@@ -24,7 +25,7 @@
             <tfoot class="border border-info">
                 <tr>
                     <td>
-                        from 2020 to 2030
+                        *from 2020 to 2030 colored for leap year.
                     </td>
                 </tr>
             </tfoot>
@@ -55,7 +56,7 @@
        cln.firstElementChild.innerText = currentYear;
        tBody.appendChild(cln);
        if (leapYear(currentYear)){
-        cln.firstElementChild.className = `text-danger`;
+        cln.firstElementChild.className = `text-danger bg-warning`;
        }
        console.log(cln);
     }
