@@ -57,7 +57,7 @@
             } 
             if (result <= 1) {
                 cName = `my-2 text-warning`;
-                msgHtml = `Résultat inférieur à 1, recommencez.<hr>`;
+                msgHtml = `Résultat inférieur ou égale à 1, recommencez.<hr>`;
                 showResult(firstNumber,secondNumber,result,cName,msgHtml);
             } else {
                 msgHtml = `a = ${firstNumber}, b = ${secondNumber}<br> a/b = ${result}`;
