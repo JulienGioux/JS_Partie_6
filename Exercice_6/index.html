@@ -16,9 +16,8 @@
         <br>Tant que le résultat de la division des deux nombres est supérieur à 1:
         <ul>
             <li>Afficher le résultat.</li>
-            <li>Assigner le résultat à secondNumber</li>
+            <li>Assigner le résultat à firstNumber</li>
         </ul>
-
     </p>
     <button id="runExo5" type="button" class="btn btn-primary m-2">Run</button>
 
@@ -46,23 +45,25 @@
             let firstNumber = getRandomIntInclusive(min, max);
             let secondNumber = getRandomIntInclusive(min, max);
             let result = firstNumber / secondNumber;
-            let myP;
-            while (result > 1) {
 
-                cName = `my-0 text-dark`;
-                msgHtml = `a = ${firstNumber}, b = ${secondNumber}<br> a/b = ${result}`;
-                showResult(firstNumber, secondNumber, result, cName, msgHtml);
-                secondNumber = result;
+            while (result > 1 && secondNumber !== 1) {
                 result = firstNumber / secondNumber;
-                if (firstNumber / result == secondNumber) {
-                    break
-                };
+
+                if (result > 1) {
+                    cName = `my-0 text-dark`;
+                    msgHtml = `a = ${firstNumber}, b = ${secondNumber}<br> a/b = ${result}`;
+                    showResult(firstNumber, secondNumber, result, cName, msgHtml);
+                    firstNumber = result;
+                }
             }
             if (result <= 1) {
                 cName = `my-2 text-warning`;
-                msgHtml = `Résultat inférieur ou égale à 1, recommencez.<hr>`;
+                msgHtml =
+                `a = ${firstNumber}, b = ${secondNumber}<br>Résultat inférieur ou égale à 1, recommencez.<hr>`;
                 showResult(firstNumber, secondNumber, result, cName, msgHtml);
-            } else {
+            }
+            if (secondNumber === 1) {
+
                 msgHtml = `a = ${firstNumber}, b = ${secondNumber}<br> a/b = ${result}`;
                 cName = `my-0 text-dark`;
                 showResult(firstNumber, secondNumber, result, cName, msgHtml);
@@ -73,6 +74,7 @@
         }
 
         function showResult(firstNumber, secondNumber, result, cName, msgHtml) {
+            let myP;
             myP = document.createElement(`p`);
             myP.className = cName;
             myBody.appendChild(myP);
