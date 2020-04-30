@@ -38,12 +38,13 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
     <script>
+        const min = 1;
         const max = 10;
         runExo5.onclick = exo5;
 
         function exo5() {
-            let firstNumber = getRandomInt(max);
-            let secondNumber = getRandomInt(max);
+            let firstNumber = getRandomIntInclusive(min, max);
+            let secondNumber = getRandomIntInclusive(min, max);
             let result = firstNumber / secondNumber;
             let myP;
             while (result > 1) {
@@ -78,8 +79,10 @@
             myP.innerHTML = msgHtml;
         }
 
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * Math.floor(max)) + 1;
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
         }
     </script>
 
