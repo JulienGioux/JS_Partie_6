@@ -1,9 +1,9 @@
 let days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
 let myP
-days.forEach(element => {
+days.forEach((day, i) => {
     myP = document.createElement(`p`);
-    myP.innerText = element;
-    if (element === `Samedi` || element === `Dimanche`) {
+    myP.innerText = day;
+    if (i>4) {
         myP.style.fontWeight = `bold`;
     }
     myBody.appendChild(myP);
