@@ -47,33 +47,37 @@
             let result = firstNumber / secondNumber;
             let myP;
             while (result > 1) {
-                
+
                 cName = `my-0 text-dark`;
-                msgHtml = `a = ${firstNumber}, b = ${secondNumber}<br> a/b = ${result}`;                              
-                showResult(firstNumber,secondNumber,result,cName,msgHtml);
+                msgHtml = `a = ${firstNumber}, b = ${secondNumber}<br> a/b = ${result}`;
+                showResult(firstNumber, secondNumber, result, cName, msgHtml);
                 secondNumber = result;
                 result = firstNumber / secondNumber;
-                if (firstNumber / result  == secondNumber){break};
-            } 
+                if (firstNumber / result == secondNumber) {
+                    break
+                };
+            }
             if (result <= 1) {
                 cName = `my-2 text-warning`;
                 msgHtml = `Résultat inférieur ou égale à 1, recommencez.<hr>`;
-                showResult(firstNumber,secondNumber,result,cName,msgHtml);
+                showResult(firstNumber, secondNumber, result, cName, msgHtml);
             } else {
                 msgHtml = `a = ${firstNumber}, b = ${secondNumber}<br> a/b = ${result}`;
                 cName = `my-0 text-dark`;
-                showResult(firstNumber,secondNumber,result,cName,msgHtml);
+                showResult(firstNumber, secondNumber, result, cName, msgHtml);
                 cName = `mb-2 text-danger`;
                 msgHtml = `Attention ! La boucle est infinie.<hr>`;
-                showResult(firstNumber,secondNumber,result,cName,msgHtml);
+                showResult(firstNumber, secondNumber, result, cName, msgHtml);
             }
         }
-        function showResult(firstNumber,secondNumber,result,cName,msgHtml){
+
+        function showResult(firstNumber, secondNumber, result, cName, msgHtml) {
             myP = document.createElement(`p`);
-                myP.className = cName;
-                myBody.appendChild(myP);
-                myP.innerHTML = msgHtml;
+            myP.className = cName;
+            myBody.appendChild(myP);
+            myP.innerHTML = msgHtml;
         }
+
         function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max)) + 1;
         }

@@ -50,8 +50,9 @@
             while (result < 250) {
                 if (firstNumber * result == secondNumber) {
                     cName = `my-0 text-danger`;
-                    msgHtml = `(a = ${firstNumber}), (b = ${secondNumber}) <br> a*b = ${result}<br>Attention ! Boucle infinie.<hr>`;
-                    showResult(firstNumber,secondNumber,result,cName,msgHtml);
+                    msgHtml =
+                        `(a = ${firstNumber}), (b = ${secondNumber}) <br> a*b = ${result}<br>Attention ! Boucle infinie.<hr>`;
+                    showResult(firstNumber, secondNumber, result, cName, msgHtml);
                     break;
                 }
                 result = firstNumber * secondNumber;
@@ -61,16 +62,18 @@
                 if (result > 250) {
                     msgHtml = `<hr>`;
                 }
-                showResult(firstNumber,secondNumber,result,cName,msgHtml);
+                showResult(firstNumber, secondNumber, result, cName, msgHtml);
                 secondNumber = result;
             }
         }
-        function showResult(firstNumber,secondNumber,result,cName,msgHtml){
+
+        function showResult(firstNumber, secondNumber, result, cName, msgHtml) {
             myP = document.createElement(`p`);
-                myP.className = cName;
-                myBody.appendChild(myP);
-                myP.innerHTML = msgHtml;
+            myP.className = cName;
+            myBody.appendChild(myP);
+            myP.innerHTML = msgHtml;
         }
+
         function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max)) + 1;
         }
