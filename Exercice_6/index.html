@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Exercice 6</title>
+</head>
+
+<body id="myBody" class="p-2">
+    <h1 class="">Exercice 6</h1>
+    <p>Créer deux variables <b>firstNumber</b> et <b>secondNumber</b>. Leur donner une valeur comprise entre 1 et 10.
+        <br>Tant que le résultat de la division des deux nombres est supérieur à 1:
+        <ul>
+            <li>Afficher le résultat.</li>
+            <li>Assigner le résultat à secondNumber</li>
+        </ul>
+
+    </p>
+    <button id="runExo5" type="button" class="btn btn-primary m-2">Run</button>
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script>
+        const max = 10;
+        runExo5.onclick = exo5;
+
+        function exo5() {
+            let firstNumber = getRandomInt(max);
+            let secondNumber = getRandomInt(max);
+            let result = firstNumber / secondNumber;
+            let myP;
+            while (result > 1) {
+                
+                cName = `my-0 text-dark`;
+                msgHtml = `a = ${firstNumber}, b = ${secondNumber}<br> a/b = ${result}`;                              
+                showResult(firstNumber,secondNumber,result,cName,msgHtml);
+                secondNumber = result;
+                result = firstNumber / secondNumber;
+                if (firstNumber / result  == secondNumber){break};
+            } 
+            if (result <= 1) {
+                cName = `my-2 text-warning`;
+                msgHtml = `Résultat inférieur à 1, recommencez.<hr>`;
+                showResult(firstNumber,secondNumber,result,cName,msgHtml);
+            } else {
+                msgHtml = `a = ${firstNumber}, b = ${secondNumber}<br> a/b = ${result}`;
+                cName = `my-0 text-dark`;
+                showResult(firstNumber,secondNumber,result,cName,msgHtml);
+                cName = `mb-2 text-danger`;
+                msgHtml = `Attention ! La boucle est infinie.<hr>`;
+                showResult(firstNumber,secondNumber,result,cName,msgHtml);
+            }
+        }
+        function showResult(firstNumber,secondNumber,result,cName,msgHtml){
+            myP = document.createElement(`p`);
+                myP.className = cName;
+                myBody.appendChild(myP);
+                myP.innerHTML = msgHtml;
+        }
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max)) + 1;
+        }
+    </script>
+
+
+</body>
+
+</html>
